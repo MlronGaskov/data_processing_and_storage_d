@@ -18,7 +18,6 @@ erDiagram
   SPOUSE_LINK {
     string spouse_info_id FK "-> SPOUSE_INFO.person_id"
     string ref FK            "IDREF -> PERSON.id"
-    string name
     string role              "wife|husband|spouse"
   }
 
@@ -26,7 +25,6 @@ erDiagram
   PARENT_LINK {
     string parents_info_id FK "-> PARENTS_INFO.person_id"
     string ref FK             "IDREF -> PERSON.id"
-    string name
     string role               "father|mother|parent"
   }
 
@@ -34,7 +32,6 @@ erDiagram
   CHILD_LINK {
     string children_info_id FK "-> CHILDREN_INFO.person_id"
     string ref FK              "IDREF -> PERSON.id"
-    string name
     string role                "son|daughter|child"
   }
 
@@ -42,6 +39,5 @@ erDiagram
   SIBLING_LINK {
     string siblings_info_id FK "-> SIBLINGS_INFO.person_id"
     string ref FK              "IDREF -> PERSON.id"
-    string name
     string role                "brother|sister|sibling"
   }
