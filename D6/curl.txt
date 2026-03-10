@@ -1,0 +1,41 @@
+curl -s http://localhost:8000/cities | jq
+
+curl -s http://localhost:8000/airports | jq
+
+curl -s "http://localhost:8000/cities/airports?city=Sochi" | jq
+curl -s "http://localhost:8000/cities/airports?city=Sochi&country=Russia" | jq
+
+curl -s "http://localhost:8000/airports/AER/schedule/inbound" | jq
+
+curl -s "http://localhost:8000/airports/AER/schedule/outbound" | jq
+
+curl -s "http://localhost:8000/routes/search?fromAirportCode=AER&toAirportCode=FRA&departureDate=2026-01-27&maxConnections=2" | jq
+
+curl -s -X POST "http://localhost:8000/bookings" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "passengerId": "TEST 1",
+    "passengerName": "Test User",
+    "segments": [
+      {
+        "routeNo": "PG0587",
+        "departureAirportCode": "AER",
+        "arrivalAirportCode": "LHR",
+        "departureTime": "2026-01-27T16:00:00Z",
+        "arrivalTime": "2026-01-27T20:50:00Z"
+      },
+      {
+        "routeNo": "PG0258",
+        "departureAirportCode": "LHR",
+        "arrivalAirportCode": "FRA",
+        "departureTime": "2026-01-28T12:00:00Z",
+        "arrivalTime": "2026-01-28T13:20:00Z"
+      }
+    ]
+  }' | jq
+
+curl -s -X POST "http://localhost:8000/check-in" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticketNo": "7003967764827"
+  }' | jq
