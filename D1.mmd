@@ -14,11 +14,7 @@ erDiagram
     string gender  "male|female|unknown"
   }
 
-  PERSON ||--o| SPOUSE_INFO : has
-  SPOUSE_INFO {
-    string person_id FK  "-> PERSON.id"
-  }
-  SPOUSE_INFO ||--o| SPOUSE_LINK : spouseLink
+  PERSON ||--o| SPOUSE_LINK : has
   SPOUSE_LINK {
     string spouse_info_id FK "-> SPOUSE_INFO.person_id"
     string ref FK            "IDREF -> PERSON.id"
@@ -26,11 +22,7 @@ erDiagram
     string role              "wife|husband|spouse"
   }
 
-  PERSON ||--o| PARENTS_INFO : has
-  PARENTS_INFO {
-    string person_id FK "-> PERSON.id"
-  }
-  PARENTS_INFO ||--o{ PARENT_LINK : parentLink
+  PERSON ||--o{ PARENT_LINK : has
   PARENT_LINK {
     string parents_info_id FK "-> PARENTS_INFO.person_id"
     string ref FK             "IDREF -> PERSON.id"
@@ -38,12 +30,7 @@ erDiagram
     string role               "father|mother|parent"
   }
 
-  PERSON ||--o| CHILDREN_INFO : has
-  CHILDREN_INFO {
-    string person_id FK "-> PERSON.id"
-    int declaredCount  ">=0"
-  }
-  CHILDREN_INFO ||--o{ CHILD_LINK : childLink
+  PERSON ||--o{ CHILD_LINK : has
   CHILD_LINK {
     string children_info_id FK "-> CHILDREN_INFO.person_id"
     string ref FK              "IDREF -> PERSON.id"
@@ -51,12 +38,7 @@ erDiagram
     string role                "son|daughter|child"
   }
 
-  PERSON ||--o| SIBLINGS_INFO : has
-  SIBLINGS_INFO {
-    string person_id FK "-> PERSON.id"
-    int declaredCount  ">=0"
-  }
-  SIBLINGS_INFO ||--o{ SIBLING_LINK : siblingLink
+  PERSON ||--o{ SIBLING_LINK : has
   SIBLING_LINK {
     string siblings_info_id FK "-> SIBLINGS_INFO.person_id"
     string ref FK              "IDREF -> PERSON.id"
